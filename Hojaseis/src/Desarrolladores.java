@@ -4,12 +4,15 @@ import java.util.TreeSet;
 import java.util.LinkedHashSet;
 
 import java.util.Scanner;
+import java.util.Set;
 
 public class Desarrolladores {
 
-	public static void main(String[] args) throws IOException {
+	public static <E> void main(String[] args) throws IOException {
+		Set<String> MySet;
 		Scanner s = new Scanner(System.in);
 		FactoryDesarrollo<String> FactoryDesarrolladores = new FactoryDesarrollo<String>();
+		
 		
 		
 		System.out.println("Bienvendio al programa de Desarrolladores");
@@ -25,8 +28,12 @@ public class Desarrolladores {
 		int opcion = s.nextInt();
 		
 		
-		FactoryDesarrolladores.Setcall(opcion);
+		MySet =FactoryDesarrolladores.Setcall(opcion);
 		
+		//Lo siguiente solo era para probarlo 
+		
+		MySet.add("Kappa");
+		
+		System.out.println(MySet.isEmpty());
 	}
-
 }
