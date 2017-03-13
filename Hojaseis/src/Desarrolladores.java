@@ -13,7 +13,6 @@ import java.util.Set;
 
 public class Desarrolladores {
 
-<<<<<<< HEAD
 	private static Scanner s;
 
 	public static void main(String[] args) {
@@ -23,7 +22,7 @@ public class Desarrolladores {
 		boolean loop;
 		boolean keep;
 		s = new Scanner(System.in);
-=======
+
 	public static <E> void main(String[] args) throws IOException {
 		Set<String> MySetAndroid;
 		Set<String> MySetJava;
@@ -32,7 +31,7 @@ public class Desarrolladores {
 		boolean loop;
 		boolean keep;
 		Scanner s = new Scanner(System.in);
->>>>>>> 2cabe94343e8eda140fefec224f4fec3b28c945c
+
 		FactoryDesarrollo<String> FactoryDesarrolladores = new FactoryDesarrollo<String>();
 		
 		
