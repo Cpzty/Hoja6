@@ -23,15 +23,6 @@ public class Desarrolladores {
 		boolean keep;
 		s = new Scanner(System.in);
 
-	public static <E> void main(String[] args) throws IOException {
-		Set<String> MySetAndroid;
-		Set<String> MySetJava;
-		Set<String> MySetIOS;
-		String nombre;
-		boolean loop;
-		boolean keep;
-		Scanner s = new Scanner(System.in);
-
 		FactoryDesarrollo<String> FactoryDesarrolladores = new FactoryDesarrollo<String>();
 		
 		
