@@ -10,10 +10,11 @@
 import java.util.HashSet;
 import java.util.TreeSet;
 import java.util.LinkedHashSet;
+import java.util.Set;
 
 
 
-public class FactoryDesarrollo {
+public class FactoryDesarrollo<E> {
 
 	// El metodo Setcall regresa una implementacion de la interfaz Set segun la opcion que ingreso el usuario
 	public Set<E> Setcall(int opcion) {
@@ -35,4 +36,5 @@ public class FactoryDesarrollo {
 		default:
 			return null;
 	}
+}
 }
