@@ -8,21 +8,23 @@
  */
 
 
+import java.io.IOException;
 import java.util.Scanner;
 import java.util.Set;
+import java.util.TreeSet;
 
 public class Desarrolladores {
 
-	private static Scanner s;
-
-	public static void main(String[] args) {
+	public static <E> void main(String[] args) throws IOException {
 		Set<String> MySetAndroid;
 		Set<String> MySetJava;
 		Set<String> MySetIOS;
+		Set<String> MyIntersectionSet;
+		String nombre;
+		String a;
 		boolean loop;
 		boolean keep;
-		s = new Scanner(System.in);
-
+		Scanner s = new Scanner(System.in);
 		FactoryDesarrollo<String> FactoryDesarrolladores = new FactoryDesarrollo<String>();
 		
 		
@@ -39,6 +41,7 @@ public class Desarrolladores {
 		System.out.println("Presione 3 para usar LinkedHashSet");
 		int opcion = s.nextInt();
 		
+		int reminder=opcion;
 		
 		MySetAndroid =FactoryDesarrolladores.Setcall(opcion);
 		MySetJava =FactoryDesarrolladores.Setcall(opcion);
@@ -70,6 +73,7 @@ public class Desarrolladores {
 					System.out.println("Ingresa el nombre que desees");
 					String opcion3=s.next();
 					MySetJava.add(opcion3);
+					String namekeeper =opcion3;
 					opcion2=0;
 				}
 				
@@ -129,11 +133,39 @@ public class Desarrolladores {
 				}
 			}
 			if(opcion==3){
+
 				loop=false;
-			}
+				
 		
 			}
 		}
+	
+		}
+		
+		
+		//Subconjunto
+//		if(reminder!=2){
+			
+			if(MySetAndroid.containsAll(MySetJava)==true&&MySetAndroid.size()!=0 && MySetJava.size()!=0 && MySetAndroid.size()>MySetJava.size()){
+				System.out.println(MySetAndroid.containsAll(MySetJava));
+				System.out.println("Java si es un subconjunto de Android");
+				}
+				else{
+				System.out.println("Java no es subconjunto de Android o alguno de los sets estan vacios");
+				}
+			
+//		}
+//		else{
+//			System.out.println("No se puede comparar usando Treeset!");
+//		} Aparentemente si funciona
+			
+
+//		Experiencia en los 3
+			MyIntersectionSet=MySetAndroid;
+			MyIntersectionSet.retainAll(MySetIOS);
+			MyIntersectionSet.retainAll(MySetJava);
+			System.out.println(MyIntersectionSet);
+		
 	}
 
 }
