@@ -1,3 +1,4 @@
+
 /**
  * Desarrolladores.java 
  * Universidad del Valle de Guatemala 
@@ -10,7 +11,6 @@
 import java.io.IOException;
 import java.util.Scanner;
 import java.util.Set;
-import java.util.TreeSet;
 import java.util.stream.Collectors;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +21,6 @@ public class Desarrolladores {
 		Set<String> MySetAndroid;
 		Set<String> MySetJava;
 		Set<String> MySetIOS;
-		Set<String> MyIntersectionSet;
 		boolean loop;
 		boolean keep;
 		Scanner s = new Scanner(System.in);
@@ -38,8 +37,6 @@ public class Desarrolladores {
 		// IOS
 		System.out.println("Presione 3 para usar LinkedHashSet");
 		int opcion = s.nextInt();
-
-		int reminder = opcion;
 
 		MySetAndroid = FactoryDesarrolladores.Setcall(opcion);
 		MySetJava = FactoryDesarrolladores.Setcall(opcion);
@@ -139,9 +136,6 @@ public class Desarrolladores {
 
 		}
 
-		// Subconjunto
-		// if(reminder!=2){
-
 		// INCISO 5: Indicar si el conjunto de Java es un subconjunto de Android
 		if (MySetAndroid.containsAll(MySetJava) == true && MySetAndroid.size() != 0 && MySetJava.size() != 0
 				&& MySetAndroid.size() > MySetJava.size()) {
@@ -150,11 +144,6 @@ public class Desarrolladores {
 		} else {
 			System.out.println("Java no es subconjunto de Android o alguno de los sets estan vacios");
 		}
-
-		// }
-		// else{
-		// System.out.println("No se puede comparar usando Treeset!");
-		// } Aparentemente si funciona
 
 		// INCISO 6: Mostrar el conjunto que contenga el mayor numero de
 		// elementos
@@ -188,12 +177,65 @@ public class Desarrolladores {
 			}
 		}
 
+		// Variables para no modificar el valor de MySetAndroid, MySetIOS,
+		// MySetJava
+		List<String> listaAndroid = new ArrayList<String>(MySetAndroid);
+		List<String> listaIOS = new ArrayList<String>(MySetIOS);
+		List<String> listaJava = new ArrayList<String>(MySetJava);
+
 		// INCISO 1: Experiencia en los 3
-		MyIntersectionSet = MySetAndroid;
-		MyIntersectionSet.retainAll(MySetIOS);
-		MyIntersectionSet.retainAll(MySetJava);
+		List<String> MyIntersectionSet1 = listaAndroid;
+		MyIntersectionSet1.retainAll(listaIOS);
+		MyIntersectionSet1.retainAll(listaJava);
 		System.out.print("Experiencia en los tres conjuntos: ");
-		System.out.println(MyIntersectionSet);
+		System.out.println(MyIntersectionSet1);
+
+		// Agregar los mismos valores para que no afecte inciso 1
+		listaAndroid = new ArrayList<String>(MySetAndroid);
+		listaIOS = new ArrayList<String>(MySetIOS);
+		listaJava = new ArrayList<String>(MySetJava);
+
+		// INCISO 2: Experiencia en Java pero no en Android
+		List<String> MyIntersectionSet2 = listaJava;
+		MyIntersectionSet2.removeAll(listaAndroid);
+		System.out.print("Experiencia en Java pero no en Android: ");
+		System.out.println(MyIntersectionSet2);
+
+		// Agregar los mismos valores para que no afecte inciso 2
+		listaAndroid = new ArrayList<String>(MySetAndroid);
+		listaIOS = new ArrayList<String>(MySetIOS);
+		listaJava = new ArrayList<String>(MySetJava);
+
+		// INCISO 3: Experiencia en Android y IOS pero no en Java
+		List<String> MyIntersectionSet3dot1 = listaAndroid;
+		List<String> MyIntersectionSet3dot2 = listaIOS;
+		MyIntersectionSet3dot1.removeAll(listaJava);
+		MyIntersectionSet3dot2.removeAll(listaJava);
+		MyIntersectionSet3dot1.retainAll(listaIOS);
+		System.out.print("Experiencia en Android y iOS pero no en Java: ");
+		System.out.println(MyIntersectionSet3dot1);
+
+		// Agregar los mismos valores para que no afecte inciso 3
+		listaAndroid = new ArrayList<String>(MySetAndroid);
+		listaIOS = new ArrayList<String>(MySetIOS);
+		listaJava = new ArrayList<String>(MySetJava);
+
+		// INCISO 4: Experiencia en Android o iOS pero no en Java
+		List<String> MyIntersectionSet4dot1 = listaAndroid;
+		List<String> MyIntersectionSet4dot2 = listaIOS;
+		MyIntersectionSet4dot1.removeAll(listaJava);
+		MyIntersectionSet4dot2.removeAll(listaJava);
+		MyIntersectionSet4dot1.addAll(listaIOS);
+		System.out.print("Experiencia en Android o iOS pero no en Java: ");
+		System.out.println(MyIntersectionSet4dot1);
+
+		// Mostrar los valores unicamente
+		System.out.print("Conjunto Android: ");
+		System.out.println(MySetAndroid);
+		System.out.print("Conjunto Java: ");
+		System.out.println(MySetJava);
+		System.out.print("Conjunto iOS: ");
+		System.out.println(MySetIOS);
 
 	}
 
